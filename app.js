@@ -1,15 +1,36 @@
 /*
-Васи положил 12 000$ на вклад 7% годовых с капитализацией 1 раз в месяц. Вывести в консоль, сможет ли он купить дом за 13 500$ через 2 года после снятия вклада. И остаток после покупки.
-Итог = Сумма * (1 + Ставка в месяц не в %) ^ срок в месяцах
+Методом prompt получите ответ пользователя на вопрос 
+"Сколько будет 7 + или - 15?". Если ответ верен, выведите 
+в консоли "Успех", если нет - "Вы робот!", а если он введёт 
+"Я не робот", то тоже "Успех".
 */
-
-const contribution = 12000;
-let result =  contribution*(1+0.07/12)**24
-if(result>13500){
-    console.log(`Вася может купить дом за 13500`)
-    console.log(`Остаток после покупки составляет ${result-13500}$`)
+const inputString = prompt('Сколько будет 7 + или - 15?');
+/*
+if(!isNaN(Number(inputString))){
+switch(Number(inputString)){
+    case 22:
+    case -8:
+        console.log('Успех!');
+        break;
+    default:
+        console.log('"Вы робот!"');
+    }
 }else{
-    console.log('У Василия не хватает средств для покупки');
-    console.log(`дефецит составляет: ${13500-result}`)
+    if(inputString === 'Я не робот'){
+        console.log('Успех!');
+    }else{
+        console.log('"Вы робот!"');
+    }
+}
+*/
+switch(true){
+    case inputString === 'Я не робот':
+    case Number(inputString) === 22:
+    case Number(inputString) === -8:
+        console.log('Успех!');
+        break;
+    default:
+        console.log('"Вы робот!"');   
+
 }
 
