@@ -1,30 +1,32 @@
-/*
-Пользователь:
-Возраст
-Наличие работы
-Деньги
-Нужно проверить может ли он купить новый MacBook за 2000$?
- Он может брать не только свои деньги, но и взять кредит. 
- Ему дадут 500$, только если ему больше 24-х лет и он имеет работу, 100$ если ему просто больше 24-х лет и 0 в ином случае.
-  Напишите функцию, которая принимает данные пользователя и товара и возвращает true или false*/
+/*Дан список задач
+const tasks = ['Задача 1'];
 
+Сделать функции:
+Добавление задачи в конец
+Удаление задачи по названию
+Перенос задачи в начало списка по названию
+! Всегда меняем исходный массив*/
 
-function issuanceOfCredit(age,job){
-    switch(true){
-        case age>=24 && job:
-            return 500;
-        case age>=24 && !job:
-            return 100;
-        default:
-            return 0;
+const testArray = ['admin','manager','ceo','user'];
+
+function deleteItemArray(array, item){
+    const indexItem = array.indexOf(item);
+    if(indexItem!=-1) {        
+        array.splice(indexItem,1)
     }
 }
-function buyingLaptop(prodctPrice,age,job,money){
-    if(money>= prodctPrice){
-        return true
-    }else{
-        const creditResult = issuanceOfCredit(age,job);
-        return Number(money)+Number(creditResult) >= prodctPrice;
+function addItemArray(array,item){
+   array.push(item);
+}
+function changeIndexItemArray(array,item){
+    if(array.includes(item)){
+        const indexItem = array.indexOf(item);
+        array.splice(indexItem,1)
+        array.unshift(item);
+
     }
 }
-console.log(buyingLaptop(2000,24,false,1900));
+deleteItemArray(testArray,'manager');
+changeIndexItemArray(testArray, 'user');
+addItemArray(testArray,'superuser')
+console.log(testArray)
