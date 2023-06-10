@@ -1,32 +1,26 @@
-/*Дан список задач
-const tasks = ['Задача 1'];
+/*
+Дан произвольный url вида - https://purpleschool.ru/course/javascript
+Нужно сделать функцию, которая выводит в консоль:
+Протокол (https)
+Доменное имя (purpleschool.ru)
+Путь внутри сайта (/course/javascript)
+ 
+*/
 
-Сделать функции:
-Добавление задачи в конец
-Удаление задачи по названию
-Перенос задачи в начало списка по названию
-! Всегда меняем исходный массив*/
 
-const testArray = ['admin','manager','ceo','user'];
 
-function deleteItemArray(array, item){
-    const indexItem = array.indexOf(item);
-    if(indexItem!=-1) {        
-        array.splice(indexItem,1)
+const  url = 'https://purpleschool.ru/course/javascript';
+const urlArr = url.split('/');
+//console.log(urlArr);
+getUrl(url);
+
+function getUrl(url){
+    const [protocol,_,name,...other] = url.split('/');
+    if(protocol !=='https:'){
+        return;
     }
-}
-function addItemArray(array,item){
-   array.push(item);
-}
-function changeIndexItemArray(array,item){
-    if(array.includes(item)){
-        const indexItem = array.indexOf(item);
-        array.splice(indexItem,1)
-        array.unshift(item);
+    console.log(protocol.slice(0,-1));
+    console.log(name);
+    console.log(other.join('/'))
 
-    }
 }
-deleteItemArray(testArray,'manager');
-changeIndexItemArray(testArray, 'user');
-addItemArray(testArray,'superuser')
-console.log(testArray)
