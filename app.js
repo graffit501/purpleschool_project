@@ -1,16 +1,20 @@
 /*
-концепция замыкания
- */
-
-function power(pow){
-    return function(num){
-        return num ** pow
-    }
-}
-const powerOfTwo = power(2)// присваиваем перемной функцию 
-console.log(powerOfTwo(10));// так как функция возвращает функцию при обращение к ней мы получаем необходимое нам значение
+Имеется массив изменения цен prices, где внутри
+1й элемент массива является ценой в момент Х,
+2й - ценой в момент Y.
+Нужно преобразовать данные в массив, где будут отображены
+только положительные изменения цен: [100, 150]
+*/
 
 
-/// реалиция через стрелочную функцию 
-const power2 = pow=>num=> num ** pow
-console.log(power2(3))
+const price = [[100,200],[120,100],[200,350]];
+
+const resultprice =price
+    .map((element)=>{
+        return element[1] - element[0]
+    })
+    .filter((element)=>{
+        return element > 0
+    })
+
+console.log(resultprice)
