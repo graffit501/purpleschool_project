@@ -1,20 +1,26 @@
 /*
-Имеется массив изменения цен prices, где внутри
-1й элемент массива является ценой в момент Х,
-2й - ценой в момент Y.
-Нужно преобразовать данные в массив, где будут отображены
-только положительные изменения цен: [100, 150]
+Найти среднее значение последоватедьности
+чисел с помощью reduce
 */
 
+const arr = [1, 4, 4, 10];
 
-const price = [[100,200],[120,100],[200,350]];
 
-const resultprice =price
-    .map((element)=>{
-        return element[1] - element[0]
-    })
-    .filter((element)=>{
-        return element > 0
-    })
+// вариант через длину массива 
+const result =  arr.reduce((acc,value)=>acc+value)/arr.length;
+console.log(result);
 
-console.log(resultprice)
+
+ const result2 = arr.reduce((acc, value,i,arrayValue)=>{
+        console.log(`index ${i} array length ${arrayValue.length} acc ${acc}`)
+            let sum = acc+value
+            acc+value
+           if(i+1 == arrayValue.length) {
+            return sum/arrayValue.length
+           }else{
+            return  sum
+           }
+
+
+ },0)
+ console.log(`result2 ${result2}`)
