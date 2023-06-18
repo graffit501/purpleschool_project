@@ -1,26 +1,11 @@
 /*
-Найти среднее значение последоватедьности
-чисел с помощью reduce
+Написать функцию, которая возвращает true,
+если элемент есть, и false, если нет.
 */
 
-const arr = [1, 4, 4, 10];
+const arr = [2, 4, 4, 10, 20];
 
 
-// вариант через длину массива 
-const result =  arr.reduce((acc,value)=>acc+value)/arr.length;
-console.log(result);
-
-
- const result2 = arr.reduce((acc, value,i,arrayValue)=>{
-        console.log(`index ${i} array length ${arrayValue.length} acc ${acc}`)
-            let sum = acc+value
-            acc+value
-           if(i+1 == arrayValue.length) {
-            return sum/arrayValue.length
-           }else{
-            return  sum
-           }
-
-
- },0)
- console.log(`result2 ${result2}`)
+const result = (element)=>{
+    return arr.find((el)=>el==element)?true:false;}
+console.log(result(12))
