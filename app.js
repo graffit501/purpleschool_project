@@ -1,11 +1,4 @@
-/*
-Написать функцию, которая возвращает true,
-если элемент есть, и false, если нет.
-*/
-
-const arr = [2, 4, 4, 10, 20];
+const str = "Вася aka Terminator Perdinator Пупкин";
 
 
-const result = (element)=>{
-    return arr.find((el)=>el==element)?true:false;}
-console.log(result(12))
+console.log(`${str.slice(0,str.indexOf('я')+1)} ${str.slice(str.indexOf("П"),str.length)}`)
