@@ -1,4 +1,16 @@
-const cardNumber = '1111222233334443';
-const cardform = cardNumber.slice(-4);
+const users = [
+    {name:'Вася',age:32},
+    {name:'Аня',age:32},
+    {name:'Петя',age:32},
+    {name:'Катя',age:32}
+]
+const sorttUser = users.sort((a,b)=>{
+    if(a.name > b.name){
+        return 1
+    }
+    else{
+        return -1
+    }
 
-console.log(cardform.padStart(cardNumber.length, '*'));
+});
+console.log(sorttUser)
