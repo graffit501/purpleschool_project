@@ -1,16 +1,23 @@
-const users = [
-    {name:'Вася',age:32},
-    {name:'Аня',age:32},
-    {name:'Петя',age:32},
-    {name:'Катя',age:32}
-]
-const sorttUser = users.sort((a,b)=>{
-    if(a.name > b.name){
-        return 1
-    }
-    else{
-        return -1
-    }
 
+const users = [
+{
+name: 'Вася',
+surname: 'Пупкин',
+age: 30,
+skills: ['Разработка', 'Dev0ps']
+},
+{
+name: 'Катя',
+surname: 'Белова',
+age: 18,
+skills: ['Дизайн']
+},
+]
+
+const resultarr =  users.map((value)=>{
+    return {fulname: `${value.name} ${value.surname}`,
+            skillNum: value.skills.length     
+        }
 });
-console.log(sorttUser)
+
+console.log(resultarr)
