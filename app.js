@@ -1,44 +1,59 @@
-/* Реализовать методы увеличения и уменьшения баланса,
-при котором каждая операция сохраняется в массив
-operations в виде { reason: 'Оплата налогов', sum: -100 }.
-Возвращается true, если успешно и false, если не зватает баланса.
-Также реализовать метод вывода числа операций по кошельку
-*/
+/*сделать объект склад с методами добавления на склад поиска по складу товара и расчета веса*/
 
 
-const wallet = {
-    balance: 0,
-    operations: [],
-    add:function(reason,sum){
-        this.operations.push({reason: reason,
-                sum:sum
+const warehouse = {
+    goods:[],
+    findGoodById:function(id){
+        return this.goods.find(value=>value.id = id);
+    },
+    addGood:function(element){
+        const existGoods = this.goods.some(item =>{
+            return item.id === element.id
         });
-        this.balance +=sum;
-        return true;
+        if(existGoods){ 
+            console.log(`товар с id ${element.id} уже существует`)
+            return }
+        this.goods.push(element);
     },
-    cost: function(reason,sum){
-        if(this.balance - sum < 0) 
-        {
-            alert(`Отрицательный баланс дальнешие операции невозможны`)
-            return `Отрицательный баланс дальнешие операции невозможны`}
-          
-            this.balance -=sum;
-        this.operations.push({reason: reason,
-            sum:sum*-1
-            
-    });
-        return true;
-    },
-    operationCount:()=> `общее количество операций ${this.operations.length}`    
-    };
+    getWeigntkg: function(){
+        const result = this.goods.reduce((acc,value)=>{
+            if(value.weight?.kg){
+                return acc+value.weight.kg
+            }
+            return acc
+        },0);
 
+        return result
+
+    }
+}
+
+const car = {
+    id:1,
+    weight:{
+        kg:1000
+    },
+    brand:"ford"
+}
+const chair = {
+    id:2,
+    weight:{
+        kg:2
+    },
     
-
-let user1 = wallet
-console.log(user1.add('зарплата',20000));
-console.log(user1.cost('product',1000));
-console.log(user1.add('премия',1500));
-console.log(user1.cost('покупка', 34522))
-
-console.log(user1.balance)
-console.log(user1.operations)
+}
+const  brak = {
+    id:3,
+    color:"red"
+}
+const  brak2 = {
+    id:3,
+    color:"red"
+}
+warehouse.addGood(car);
+warehouse.addGood(chair);
+warehouse.addGood(brak);
+warehouse.addGood(brak2);
+console.log(warehouse)
+console.log(warehouse.findGoodById(1));
+console.log(warehouse.getWeigntkg());
