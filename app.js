@@ -1,59 +1,51 @@
-/*сделать объект склад с методами добавления на склад поиска по складу товара и расчета веса*/
 
+/*
+Дополнить объект методом для получения имени:
+- компании
+- сео
+- сотрудника
+*/
 
-const warehouse = {
-    goods:[],
-    findGoodById:function(id){
-        return this.goods.find(value=>value.id = id);
-    },
-    addGood:function(element){
-        const existGoods = this.goods.some(item =>{
-            return item.id === element.id
-        });
-        if(existGoods){ 
-            console.log(`товар с id ${element.id} уже существует`)
-            return }
-        this.goods.push(element);
-    },
-    getWeigntkg: function(){
-        const result = this.goods.reduce((acc,value)=>{
-            if(value.weight?.kg){
-                return acc+value.weight.kg
+const company = {
+    name: "ООО Агро",
+    employees: [
+        {
+            name: "Света",
+            age: 25,
+            job:"менеджер",
+            getname:function(){
+                return  this.name
             }
-            return acc
-        },0);
-
+        },
+        {
+            name: "Иван",
+            age: 25,
+            job:"оператор",
+            getname:function(){
+                return  this.name
+            }
+        },
+       
+    ],
+    ceo: {
+        name: "Вася",
+        lastname: "Иванов",
+        getfullceo:function(){
+            return `Директор ${this.name} ${this.lastname}`
+        }
+    },
+    getname: function(){
+        return `название компании ${this.name}`
+    },
+    getfullemployee: function(){
+        const result = this.employees.map((value)=>{
+            return `Имя: ${value.name} Возраст  ${value.age} Должность:${value.job}`
+        })
         return result
-
     }
-}
+};
 
-const car = {
-    id:1,
-    weight:{
-        kg:1000
-    },
-    brand:"ford"
-}
-const chair = {
-    id:2,
-    weight:{
-        kg:2
-    },
-    
-}
-const  brak = {
-    id:3,
-    color:"red"
-}
-const  brak2 = {
-    id:3,
-    color:"red"
-}
-warehouse.addGood(car);
-warehouse.addGood(chair);
-warehouse.addGood(brak);
-warehouse.addGood(brak2);
-console.log(warehouse)
-console.log(warehouse.findGoodById(1));
-console.log(warehouse.getWeigntkg());
+console.log(company.getname());
+console.log(company.ceo.getfullceo())
+console.log(company.getfullemployee())
+console.log(company.employees.map(employee => employee.getname()))
