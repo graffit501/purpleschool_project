@@ -1,51 +1,41 @@
-
+'use strict';
 /*
-Дополнить объект методом для получения имени:
-- компании
-- сео
-- сотрудника
+Создайте объект пользователя с паролем.
+С помощью функции ниже удалить пароль сделав
+функцию сброса пароля
 */
 
-const company = {
-    name: "ООО Агро",
-    employees: [
-        {
-            name: "Света",
-            age: 25,
-            job:"менеджер",
-            getname:function(){
-                return  this.name
-            }
-        },
-        {
-            name: "Иван",
-            age: 25,
-            job:"оператор",
-            getname:function(){
-                return  this.name
-            }
-        },
-       
-    ],
-    ceo: {
-        name: "Вася",
-        lastname: "Иванов",
-        getfullceo:function(){
-            return `Директор ${this.name} ${this.lastname}`
-        }
-    },
-    getname: function(){
-        return `название компании ${this.name}`
-    },
-    getfullemployee: function(){
-        const result = this.employees.map((value)=>{
-            return `Имя: ${value.name} Возраст  ${value.age} Должность:${value.job}`
-        })
-        return result
-    }
-};
+function removePassword(reset) {
+if (reset) {
+this.password = undefined;
+} else {
+this.password = '1';
+}
+}'use strict';
+/*
+Создайте объект пользователя с паролем.
+С помощью функции ниже удалить пароль сделав
+функцию сброса пароля
+*/
+const user = {
+    login:'graffit501',
+    password: '1234',
+    name: 'sergey',
+    age:33
+}
+function removePassword(reset) {
+if (reset) {
+this.password = undefined;
+} else {
+this.password = '1';
+}
+}
 
-console.log(company.getname());
-console.log(company.ceo.getfullceo())
-console.log(company.getfullemployee())
-console.log(company.employees.map(employee => employee.getname()))
+
+const resetpassword  = removePassword.bind(user);
+removePassword.call(user,false)
+
+
+//resetpassword(false)
+//resetpassword2()
+console.log(user)
