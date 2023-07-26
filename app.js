@@ -1,41 +1,29 @@
 'use strict';
+
 /*
-Создайте объект пользователя с паролем.
-С помощью функции ниже удалить пароль сделав
-функцию сброса пароля
+Сделать функцию пользователя которая берет за основу
+userInfo и за счет замыкания создает новый объект, с
+которым можно работать как user1().increase(100)
 */
 
-function removePassword(reset) {
-if (reset) {
-this.password = undefined;
-} else {
-this.password = '1';
+const userInfo = {
+balance: 0,
+operations: 0,
+increase(sum) {
+    this.balance += sum;
+    this.operations++;
+    },
+};
+function createuser(){
+    const newUser = {...userInfo}
+    return function(){
+            return newUser
+    }
 }
-}'use strict';
-/*
-Создайте объект пользователя с паролем.
-С помощью функции ниже удалить пароль сделав
-функцию сброса пароля
-*/
-const user = {
-    login:'graffit501',
-    password: '1234',
-    name: 'sergey',
-    age:33
-}
-function removePassword(reset) {
-if (reset) {
-this.password = undefined;
-} else {
-this.password = '1';
-}
-}
-
-
-const resetpassword  = removePassword.bind(user);
-removePassword.call(user,false)
-
-
-//resetpassword(false)
-//resetpassword2()
-console.log(user)
+ const user1  = createuser();
+ const user2  = createuser();
+ user1().increase(150)
+ user2().increase(350)
+ user1().increase(450)
+ console.log(user1())
+ console.log(user2())
