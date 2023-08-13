@@ -1,29 +1,24 @@
-'use strict';
-
-/*
-Сделать функцию пользователя которая берет за основу
-userInfo и за счет замыкания создает новый объект, с
-которым можно работать как user1().increase(100)
-*/
-
-const userInfo = {
-balance: 0,
-operations: 0,
-increase(sum) {
-    this.balance += sum;
-    this.operations++;
-    },
-};
-function createuser(){
-    const newUser = {...userInfo}
-    return function(){
-            return newUser
+'use strict'
+function submitForm(){
+    const input  = document.querySelector('.input').value;
+    if(!input){
+        return
+    }
+    document.querySelector(".panel").innerText = input;
+    document.querySelector('.input').value = "";
+}
+function inputChange(e){
+    if(e.code == 'Enter'){
+        submitForm()
     }
 }
- const user1  = createuser();
- const user2  = createuser();
- user1().increase(150)
- user2().increase(350)
- user1().increase(450)
- console.log(user1())
- console.log(user2())
+function gettag(){
+    
+    document.querySelectorAll('div.one').forEach((element)=>{console.log(element.innerText)})
+    getselector("div#two");
+    getselector('span[user-id = "4"]')
+    
+}
+function getselector(selector){
+    console.log( document.querySelector(selector).innerText);
+}
