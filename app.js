@@ -9,13 +9,19 @@ function submitForm(){
     if(!input){
         return
     }
+    const keyVal = "key" + keynumber
+    const valObj =  {keyVal: "text", "value":{"text":input}}
+    let lsStr
+    try{
+        lsStr =  JSON.stringify(valObj);
+    }catch{
+        console.log("нихуя не получилось")
+    }
     document.querySelector(".panel").innerText = input;
     document.querySelector('.input').value = "";
-    localStorage.setItem(keynumber,input);
-    console.log(keynumber)
+    localStorage.setItem(keynumber, lsStr);
     keynumber++;
-    localStorage.setItem('keynumber', keynumber)
-
+    localStorage.setItem("keynumber",keynumber)
 }
 function inputChange(e){
     if(e.code == 'Enter'){
@@ -26,6 +32,14 @@ function gettag(){
     document.querySelectorAll('div.one').forEach((element)=>{console.log(element.innerText)})
     getselector("div#two");
     getselector('span[user-id = "4"]');
+    const valkey  = document.querySelector('.input').value;
+    try{
+        let jsObj = JSON.parse(localStorage.getItem(valkey));
+        console.log(jsObj);
+        document.querySelector('.input').value ="";
+    }catch{
+        console.log("опять нихуя не получилось")
+    }
      
 }
 function getselector(selector){
